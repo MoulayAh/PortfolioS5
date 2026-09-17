@@ -1,0 +1,39 @@
+---
+layout: default
+---
+<section class="hero">
+  <p class="eyebrow">Portfolio de 3ème année · Parcours C</p>
+  <h1>{{ site.author.name }}</h1>
+  <p class="hero-lead">{{ content }}</p>
+  <div class="hero-actions">
+    <a class="btn btn-primary" href="{{ '/competences/' | relative_url }}">Lecture par compétences</a>
+    <a class="btn btn-outline" href="{{ '/projets/' | relative_url }}">Lecture par projets</a>
+  </div>
+</section>
+
+<section class="home-section">
+  <h2>Les 3 compétences du référentiel</h2>
+  <div class="grid grid-3">
+    {% assign comps = site.competences | sort: "order" %}
+    {% for c in comps %}
+    <a class="card competence-card" href="{{ c.url | relative_url }}">
+      <span class="badge">Compétence {{ c.order }}</span>
+      <h3>{{ c.title }}</h3>
+      <p>{{ c.practical }}</p>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="home-section">
+  <h2>Projet phare — 3ème année</h2>
+  {% assign featured = site.projects | where: "featured", true | first %}
+  {% if featured %}
+    {% include project-card.html project=featured %}
+  {% endif %}
+</section>
+
+<section class="home-section home-cta">
+  <h2>Voir la démarche complète</h2>
+  <p>Chaque projet liste les compétences qu'il mobilise, et chaque compétence liste les projets qui la prouvent. Le <a href="{{ '/tableau-croise/' | relative_url }}">tableau croisé</a> résume l'ensemble en un coup d'œil.</p>
+</section>

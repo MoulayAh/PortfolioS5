@@ -1,0 +1,19 @@
+{% comment %}
+  Usage: {% include project-card.html project=project %}
+{% endcomment %}
+<article class="card project-card">
+  <div class="card-meta">
+    <span class="badge badge-period">{{ include.project.period }}</span>
+  </div>
+  <h3 class="card-title"><a href="{{ include.project.url | relative_url }}">{{ include.project.title }}</a></h3>
+  <p class="card-summary">{{ include.project.summary }}</p>
+  <div class="tag-list">
+    {% for slug in include.project.competences %}
+      {% assign comp = site.competences | where: "slug", slug | first %}
+      {% if comp %}<a class="tag" href="{{ comp.url | relative_url }}">{{ comp.title }}</a>{% endif %}
+    {% endfor %}
+  </div>
+  <div class="tech-list">
+    {% for t in include.project.tech %}<span class="tech">{{ t }}</span>{% endfor %}
+  </div>
+</article>

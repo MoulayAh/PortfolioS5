@@ -1,0 +1,29 @@
+<aside class="sidebar">
+  <div class="sidebar-inner">
+    <a class="avatar" href="{{ '/' | relative_url }}" aria-label="Accueil">
+      <span class="avatar-initials">{{ site.author.name | slice: 0, 1 }}{{ site.author.name | split: ' ' | last | slice: 0, 1 }}</span>
+    </a>
+    <h1 class="site-title"><a href="{{ '/' | relative_url }}">{{ site.author.name }}</a></h1>
+    <p class="site-tagline">{{ site.tagline }}</p>
+
+    <nav class="site-nav">
+      <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Accueil</a>
+      <a href="{{ '/about/' | relative_url }}" {% if page.url contains '/about' %}class="active"{% endif %}>À propos</a>
+      <a href="{{ '/competences/' | relative_url }}" {% if page.url contains '/competences' %}class="active"{% endif %}>Compétences</a>
+      <a href="{{ '/projets/' | relative_url }}" {% if page.url contains '/projets' %}class="active"{% endif %}>Projets</a>
+      <a href="{{ '/tableau-croise/' | relative_url }}" {% if page.url contains '/tableau-croise' %}class="active"{% endif %}>Tableau croisé</a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <ul class="social-links">
+        <li><a href="{{ site.author.github }}" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="{{ site.author.linkedin }}" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="mailto:{{ site.author.email }}">Email</a></li>
+      </ul>
+      <a class="cv-link" href="{{ '/cv/cv.pdf' | relative_url }}" download>Télécharger le CV</a>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Changer de thème">
+        <span class="icon-dark">🌙</span><span class="icon-light">☀️</span>
+      </button>
+    </div>
+  </div>
+</aside>

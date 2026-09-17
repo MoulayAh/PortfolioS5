@@ -1,0 +1,30 @@
+---
+layout: default
+---
+<article class="page project-page">
+  <header class="page-header">
+    <p class="eyebrow">{{ page.period }}</p>
+    <h1>{{ page.title }}</h1>
+    {% if page.link and page.link != "" %}
+      <a class="btn btn-outline btn-small" href="{{ page.link }}" target="_blank" rel="noopener">Voir le dépôt / le site ↗</a>
+    {% endif %}
+  </header>
+
+  <div class="tag-list">
+    {% for slug in page.competences %}
+      {% assign comp = site.competences | where: "slug", slug | first %}
+      {% if comp %}<a class="tag" href="{{ comp.url | relative_url }}">{{ comp.title }}</a>{% endif %}
+    {% endfor %}
+  </div>
+  <div class="tech-list">
+    {% for t in page.tech %}<span class="tech">{{ t }}</span>{% endfor %}
+  </div>
+
+  <div class="page-body">
+    {{ content }}
+  </div>
+
+  <nav class="prev-next">
+    <a href="{{ '/projets/' | relative_url }}">← Tous les projets</a>
+  </nav>
+</article>

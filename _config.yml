@@ -1,0 +1,68 @@
+# ------------------------------------------------------------------
+# Configuration Jekyll — Portfolio BUT Informatique - Parcours C
+# ------------------------------------------------------------------
+
+title: "Moulay Ahmed EL Jamali"
+tagline: "Étudiant en BUT Informatique — Parcours C"
+description: >-
+  Portfolio de 3ème année du BUT Informatique (IUT de Montreuil) : démarche
+  réflexive croisant compétences du référentiel national et projets menés
+  durant les trois années de formation.
+
+# Change cette URL si tu déploies sur un domaine perso ou un autre user GitHub
+url: "https://moulayah.github.io"
+baseurl: "/PortfolioS5"
+
+lang: fr
+
+author:
+  name: "Moulay Ahmed EL Jamali"
+  email: "Ahmed.eljamali@outlook.fr"
+  linkedin: "https://www.linkedin.com/in/moulay-ahmed-eljamali-87769333b/"
+  github: "https://github.com/MoulayAh"
+  school: "IUT de Montreuil — Département informatique"
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+permalink: /:title/
+
+# --- Collections -----------------------------------------------------
+collections:
+  projects:
+    output: true
+    permalink: /projets/:path/
+  competences:
+    output: true
+    permalink: /competences/:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+  - scope:
+      path: ""
+      type: "competences"
+    values:
+      layout: "competence"
+
+# --- Plugins (whitelistés GitHub Pages) --------------------------------
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+sass:
+  sass_dir: assets/css
+  style: compressed
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - node_modules

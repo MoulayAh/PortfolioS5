@@ -1,0 +1,39 @@
+---
+layout: default
+---
+<article class="page competence-page">
+  <header class="page-header">
+    <p class="eyebrow">Compétence {{ page.order }} / 3</p>
+    <h1>{{ page.title }}</h1>
+    <p class="page-subtitle official-text">{{ page.official }}</p>
+  </header>
+
+  <div class="page-body">
+    <p class="practical-text">{{ page.practical }}</p>
+
+    {% if page.tools %}
+    <h2>Outils &amp; méthodes</h2>
+    <ul class="tools-list">
+      {% for t in page.tools %}<li>{{ t }}</li>{% endfor %}
+    </ul>
+    {% endif %}
+
+    {{ content }}
+
+    <h2>Projets qui prouvent cette compétence</h2>
+    {% assign related = site.projects | where_exp: "p", "p.competences contains page.slug" | sort: "date" %}
+    {% if related.size > 0 %}
+      <div class="grid grid-2">
+        {% for p in related %}
+          {% include project-card.html project=p %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <p><em>Aucun projet rattaché pour le moment.</em></p>
+    {% endif %}
+  </div>
+
+  <nav class="prev-next">
+    <a href="{{ '/competences/' | relative_url }}">← Toutes les compétences</a>
+  </nav>
+</article>
