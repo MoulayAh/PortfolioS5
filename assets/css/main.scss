@@ -247,7 +247,39 @@ h1, h2, h3, .site-title, .card-title {
 
 .tools-list { padding-left: 1.2rem; }
 
-.table-wrapper { overflow-x: auto; }
+.table-wrapper {
+  overflow-x: auto;
+  position: relative;
+}
+.table-wrapper::before,
+.table-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 28px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .2s ease;
+  z-index: 1;
+}
+.table-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bg-elevated), transparent);
+}
+.table-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bg-elevated), transparent);
+}
+.table-wrapper.has-overflow.can-scroll-left::before { opacity: 1; }
+.table-wrapper.has-overflow.can-scroll-right::after { opacity: 1; }
+.scroll-hint {
+  display: none;
+  color: var(--text-muted);
+  font-size: .8rem;
+  margin-bottom: .5rem;
+}
+.table-wrapper.has-overflow + .scroll-hint { display: block; }
 .crossed-table {
   width: 100%;
   border-collapse: collapse;

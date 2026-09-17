@@ -36,5 +36,6 @@ de double saisie, donc pas de risque d'incohérence entre les vues.
   </tbody>
 </table>
 </div>
+<p class="scroll-hint">← Faites défiler horizontalement pour voir toutes les compétences →</p>
 
 <p class="legend">La ligne surlignée correspond au projet phare de 3ème année (alternance CGI), pièce centrale de ce portfolio tant que d'autres SAÉ de BUT3 ne sont pas venues l'enrichir.</p>
